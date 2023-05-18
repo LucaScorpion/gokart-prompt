@@ -11,13 +11,28 @@ func Git() string {
 	if rawStatus, ok := internal.Command("git", "status", "--porcelain", "-b"); ok {
 		s := parseStatus(rawStatus)
 
-		return ansi.Color(ansi.Magenta, " "+branchIcon+" "+s.branch) + statusText(s)
+		branchText := ansi.Color(ansi.Magenta, " "+branchIcon+" "+s.branch)
+		return branchText + divergedStatus(s) + statusSymbols(s)
 	}
 
 	return ""
 }
 
-func statusText(s status) string {
+func divergedStatus(s status) string {
+	symbol := ""
+
+	if s.ahead && s.behind {
+		symbol = " ⇅"
+	} else if s.ahead {
+		symbol = " ↑"
+	} else if s.behind {
+		symbol = " ↓"
+	}
+
+	return ansi.Color(ansi.Red, symbol)
+}
+
+func statusSymbols(s status) string {
 	symbols := ""
 
 	if s.untracked {

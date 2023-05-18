@@ -1,15 +1,22 @@
 package git
 
-import "strings"
+import (
+	"gokart-prompt/internal"
+	"strings"
+)
 
 type status struct {
-	branch    string
+	branch string
+
 	untracked bool
 	staged    bool
 	unstaged  bool
 	renamed   bool
 	deleted   bool
 	unmerged  bool
+
+	ahead  bool
+	behind bool
 }
 
 func parseStatus(raw string) status {
@@ -19,6 +26,9 @@ func parseStatus(raw string) status {
 	for _, line := range lines {
 		parseStatusLine(&result, line)
 	}
+
+	result.ahead = revListCount(result.branch+"@{upstream}..HEAD") != "0"
+	result.behind = revListCount("HEAD.."+result.branch+"@{upstream}") != "0"
 
 	return result
 }
@@ -59,4 +69,9 @@ func parseStatusLine(s *status, line string) {
 	if codeX == 'U' || codeY == 'U' || code == "DD" || code == "AA" {
 		s.unmerged = true
 	}
+}
+
+func revListCount(commit string) string {
+	c, _ := internal.Command("git", "rev-list", "--count", commit)
+	return c
 }
