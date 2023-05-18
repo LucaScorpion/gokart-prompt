@@ -1,7 +1,7 @@
 package internal
 
 import (
-	"gokart-powerline/internal/ansi"
+	"gokart-prompt/internal/ansi"
 	"os"
 )
 

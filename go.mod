@@ -1,3 +1,3 @@
-module gokart-powerline
+module gokart-prompt
 
 go 1.20

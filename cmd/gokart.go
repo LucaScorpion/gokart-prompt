@@ -2,9 +2,9 @@ package main
 
 import (
 	"fmt"
-	"gokart-powerline/internal"
-	"gokart-powerline/internal/ansi"
-	"gokart-powerline/internal/versions"
+	"gokart-prompt/internal"
+	"gokart-prompt/internal/ansi"
+	"gokart-prompt/internal/versions"
 	"os"
 )
 

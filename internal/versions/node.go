@@ -1,8 +1,8 @@
 package versions
 
 import (
-	"gokart-powerline/internal"
-	"gokart-powerline/internal/ansi"
+	"gokart-prompt/internal"
+	"gokart-prompt/internal/ansi"
 )
 
 var nodeFiles = []string{
