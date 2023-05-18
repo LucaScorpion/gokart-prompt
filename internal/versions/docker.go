@@ -22,7 +22,7 @@ func DockerVersion() string {
 		parts := strings.Split(version, " ")
 		version = parts[len(parts)-1]
 
-		return ansi.Color(ansi.Blue, " 🐳 "+version)
+		return ansi.Color(ansi.Blue, " 🐳 v"+version)
 	}
 
 	return ""
