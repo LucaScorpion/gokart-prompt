@@ -1,8 +1,9 @@
 name: Publish
 
 on:
-  release:
-    types: [published]
+  push:
+    tags:
+      - "v*.*.*"
 
 jobs:
   build:
@@ -13,3 +14,5 @@ jobs:
         with:
           go-version: '1.20'
       - run: go build ./cmd/gokart.go
+      - run: zip gokart-prompt.zip gokart gokart.* README.md
+#      - uses: softprops/action-gh-release@v1
