@@ -6,5 +6,10 @@ import (
 )
 
 func main() {
+	fmt.Print("\n")
 	fmt.Print(internal.Path())
+
+	fmt.Print("\n")
+	fmt.Print(internal.ExitCode())
+	fmt.Print("➜ ")
 }
