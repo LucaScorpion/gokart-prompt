@@ -16,7 +16,11 @@ func GoVersion() string {
 	}
 
 	if version, ok := internal.Command("go", "version"); ok {
-		version, _, _ := strings.Cut(version[13:], " ")
+		/*
+			Example:
+			go version go1.20.2 linux/amd64
+		*/
+		version := strings.SplitN(version, " ", 4)[2][2:]
 		return ansi.Color(ansi.Cyan, " 🐹 v"+version)
 	}
 

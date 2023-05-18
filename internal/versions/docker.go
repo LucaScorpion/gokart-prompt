@@ -18,6 +18,10 @@ func DockerVersion() string {
 	}
 
 	if version, ok := internal.Command("docker", "-v"); ok {
+		/*
+			Example:
+			Docker version 23.0.1, build a5ee5b1dfc
+		*/
 		version, _, _ = strings.Cut(version[15:], ",")
 		return ansi.Color(ansi.Blue, " 🐳 v"+version)
 	}
