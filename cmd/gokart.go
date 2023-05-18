@@ -40,6 +40,7 @@ func ps1() {
 	fmt.Print(versions.NodeVersion())
 	fmt.Print(versions.PhpVersion())
 	fmt.Print(versions.RubyVersion())
+	fmt.Print(versions.RustVersion())
 
 	// Tools
 	fmt.Print(versions.DockerVersion())
