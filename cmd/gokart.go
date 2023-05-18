@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"gokart-powerline/internal"
+	"gokart-powerline/internal/ansi"
 	"gokart-powerline/internal/versions"
 	"os"
 )
@@ -26,9 +27,13 @@ func main() {
 
 func ps1() {
 	fmt.Print("\n")
+	fmt.Print(ansi.Bold())
+
 	fmt.Print(internal.Path())
 
 	fmt.Print(versions.NodeVersion())
+
+	fmt.Print(ansi.Reset())
 }
 
 func ps2() {

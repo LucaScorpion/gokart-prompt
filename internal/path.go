@@ -1,6 +1,7 @@
 package internal
 
 import (
+	"gokart-powerline/internal/ansi"
 	"os"
 	"strings"
 )
@@ -16,5 +17,5 @@ func Path() string {
 		wd = "~" + suffix
 	}
 
-	return wd
+	return ansi.Color(ansi.Cyan, wd)
 }
