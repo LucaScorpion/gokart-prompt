@@ -8,19 +8,19 @@ import (
 )
 
 func Path() string {
-	wd, err := os.Getwd()
+	dir, err := os.Getwd()
 	if err != nil {
 		return ""
 	}
 
-	if isProjectDir(wd) {
-		wd = path.Base(wd)
+	if projectDir, isProject := upsearchProjectDir(); isProject {
+		dir, _ = strings.CutPrefix(dir, path.Dir(projectDir)+"/")
 	} else {
 		home := os.Getenv("HOME")
-		if suffix, found := strings.CutPrefix(wd, home); found {
-			wd = "~" + suffix
+		if suffix, found := strings.CutPrefix(dir, home); found {
+			dir = "~" + suffix
 		}
 	}
 
-	return ansi.Color(ansi.Cyan, wd)
+	return ansi.Color(ansi.Cyan, dir)
 }

@@ -9,11 +9,11 @@ func UpsearchWd(fileNames []string) (string, bool) {
 	if wd, err := os.Getwd(); err != nil {
 		return "", false
 	} else {
-		return Upsearch(wd, fileNames)
+		return upsearch(wd, fileNames)
 	}
 }
 
-func Upsearch(dir string, fileNames []string) (string, bool) {
+func upsearch(dir string, fileNames []string) (string, bool) {
 	for _, name := range fileNames {
 		p := path.Join(dir, name)
 		if _, err := os.Stat(p); err == nil {
@@ -23,7 +23,7 @@ func Upsearch(dir string, fileNames []string) (string, bool) {
 
 	parentDir := path.Dir(dir)
 	if parentDir != dir && !isProjectDir(dir) {
-		return Upsearch(parentDir, fileNames)
+		return upsearch(parentDir, fileNames)
 	}
 
 	return "", false

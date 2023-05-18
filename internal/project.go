@@ -14,3 +14,11 @@ func isProjectDir(dir string) bool {
 		return f.IsDir()
 	}
 }
+
+func upsearchProjectDir() (string, bool) {
+	name, isProject := UpsearchWd([]string{gitFolder})
+	if isProject {
+		name = path.Dir(name)
+	}
+	return name, isProject
+}
