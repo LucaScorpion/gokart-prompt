@@ -6,7 +6,11 @@ GOKART_DIR=${${(%):-%x}:A:h}
 
 gokart_powerline_precmd() {
     export EXIT_CODE=$?
-    PROMPT=$("$GOKART_DIR/gokart")
+    PS1=$("$GOKART_DIR/gokart" ps1)
+    PS2=$("$GOKART_DIR/gokart" ps2)
+
+    local NEWLINE=$'\n'
+    PROMPT="${PS1}${NEWLINE}${PS2}"
 }
 
 gokart_powerline_setup() {
