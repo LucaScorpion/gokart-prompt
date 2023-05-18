@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"gokart-prompt/internal"
 	"gokart-prompt/internal/ansi"
+	"gokart-prompt/internal/git"
 	"gokart-prompt/internal/versions"
 	"os"
 )
@@ -30,6 +31,7 @@ func ps1() {
 	fmt.Print(ansi.Bold())
 
 	fmt.Print(internal.Path())
+	fmt.Print(git.Git())
 
 	fmt.Print(versions.NodeVersion())
 	fmt.Print(versions.PhpVersion())

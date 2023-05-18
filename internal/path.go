@@ -13,7 +13,7 @@ func Path() string {
 		return ""
 	}
 
-	if IsProjectDir(wd) {
+	if isProjectDir(wd) {
 		wd = path.Base(wd)
 	} else {
 		home := os.Getenv("HOME")

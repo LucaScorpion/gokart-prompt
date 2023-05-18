@@ -7,7 +7,7 @@ import (
 
 const gitFolder = ".git"
 
-func IsProjectDir(dir string) bool {
+func isProjectDir(dir string) bool {
 	if f, err := os.Stat(path.Join(dir, gitFolder)); err != nil {
 		return false
 	} else {

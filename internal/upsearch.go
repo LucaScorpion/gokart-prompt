@@ -22,7 +22,7 @@ func Upsearch(dir string, fileNames []string) (string, bool) {
 	}
 
 	parentDir := path.Dir(dir)
-	if parentDir != dir && !IsProjectDir(dir) {
+	if parentDir != dir && !isProjectDir(dir) {
 		return Upsearch(parentDir, fileNames)
 	}
 
