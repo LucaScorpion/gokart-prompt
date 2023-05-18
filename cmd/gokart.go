@@ -32,6 +32,7 @@ func ps1() {
 	fmt.Print(internal.Path())
 
 	fmt.Print(versions.NodeVersion())
+	fmt.Print(versions.DockerVersion())
 
 	fmt.Print(ansi.Reset())
 }
