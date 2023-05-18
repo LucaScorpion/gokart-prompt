@@ -2,6 +2,8 @@
 
 **Blazing fast and slick shell prompt, written in Go**
 
+[![Build](https://github.com/LucaScorpion/gokart-prompt/actions/workflows/build.yml/badge.svg)](https://github.com/LucaScorpion/gokart-prompt/actions/workflows/build.yml)
+
 ## Installation 🚀
 
 <details>
