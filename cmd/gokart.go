@@ -11,5 +11,4 @@ func main() {
 
 	fmt.Print("\n")
 	fmt.Print(internal.ExitCode())
-	fmt.Print("➜ ")
 }

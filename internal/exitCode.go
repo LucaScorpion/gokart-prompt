@@ -1,13 +1,14 @@
 package internal
 
 import (
+	"gokart-powerline/internal/ansi"
 	"os"
 )
 
 func ExitCode() string {
 	code := os.Getenv("EXIT_CODE")
 	if code == "0" {
-		return ""
+		return ansi.Color(ansi.Green, "➜ ")
 	}
-	return code + " "
+	return ansi.Color(ansi.Red, code+" ➜ ")
 }
