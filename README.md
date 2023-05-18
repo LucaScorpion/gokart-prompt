@@ -9,15 +9,13 @@
 <details>
 <summary>Oh My Zsh</summary>
 
-Download the latest release:
-
-// TODO
+Download and extract the latest release:
 
 ```shell
-
+curl -fsSL https://github.com/LucaScorpion/gokart-prompt/releases/latest/download/gokart-prompt.tar.gz | tar xzvf - -C "$ZSH_CUSTOM/themes"
 ```
 
-Symlink `gokart.zsh-theme`
+Symlink `gokart.zsh-theme` in your themes directory:
 
 ```shell
 ln -s "$ZSH_CUSTOM/themes/gokart-prompt/gokart.zsh-theme" "$ZSH_CUSTOM/themes/gokart.zsh-theme"
