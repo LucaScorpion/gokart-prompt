@@ -18,10 +18,7 @@ func DockerVersion() string {
 	}
 
 	if version, ok := internal.Command("docker", "-v"); ok {
-		version, _, _ = strings.Cut(version, ",")
-		parts := strings.Split(version, " ")
-		version = parts[len(parts)-1]
-
+		version, _, _ = strings.Cut(version[15:], ",")
 		return ansi.Color(ansi.Blue, " 🐳 v"+version)
 	}
 

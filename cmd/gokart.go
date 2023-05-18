@@ -33,6 +33,7 @@ func ps1() {
 	fmt.Print(internal.Path())
 	fmt.Print(git.Git())
 
+	fmt.Print(versions.GoVersion())
 	fmt.Print(versions.NodeVersion())
 	fmt.Print(versions.PhpVersion())
 	fmt.Print(versions.DockerVersion())

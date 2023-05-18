@@ -16,9 +16,7 @@ func PhpVersion() string {
 	}
 
 	if version, ok := internal.Command("php", "-v"); ok {
-		parts := strings.SplitN(version, " ", 3)
-		version = parts[1]
-
+		version, _, _ := strings.Cut(version[4:], " ")
 		return ansi.Color(ansi.Magenta, " 🐘 v"+version)
 	}
 
