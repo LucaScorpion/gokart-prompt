@@ -15,5 +15,9 @@ func NodeVersion() string {
 		return ""
 	}
 
-	return ansi.Color(ansi.Green, " ⬢ v")
+	if version, ok := internal.Command("node", "-v"); ok {
+		return ansi.Color(ansi.Green, " ⬢ "+version)
+	}
+
+	return ""
 }
