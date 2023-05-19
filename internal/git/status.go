@@ -2,6 +2,7 @@ package git
 
 import (
 	"gokart-prompt/internal"
+	"strconv"
 	"strings"
 )
 
@@ -27,8 +28,16 @@ func parseStatus(raw string) status {
 		parseStatusLine(&result, line)
 	}
 
-	result.ahead = revListCount(result.branch+"@{upstream}..HEAD") != "0"
-	result.behind = revListCount("HEAD.."+result.branch+"@{upstream}") != "0"
+	aheadCount := revListCount(result.branch + "@{upstream}..HEAD")
+
+	// If there is no upstream branch, revListCount will return -1.
+	// This essentially means we are "ahead", and should display the push icon.
+	if aheadCount == -1 {
+		aheadCount = 1
+	}
+
+	result.ahead = aheadCount != 0
+	result.behind = revListCount("HEAD.."+result.branch+"@{upstream}") > 0
 
 	return result
 }
@@ -71,7 +80,12 @@ func parseStatusLine(s *status, line string) {
 	}
 }
 
-func revListCount(commit string) string {
+func revListCount(commit string) int {
 	c, _ := internal.Command("git", "rev-list", "--count", commit)
-	return c
+
+	if i, err := strconv.Atoi(c); err == nil {
+		return i
+	}
+
+	return -1
 }
