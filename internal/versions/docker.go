@@ -5,7 +5,7 @@ import (
 	"strings"
 )
 
-var Docker = Section{
+var Docker = section{
 	symbol: "🐳",
 	color:  ansi.Blue,
 

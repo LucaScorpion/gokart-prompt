@@ -5,7 +5,7 @@ import (
 	"strings"
 )
 
-var Ruby = Section{
+var Ruby = section{
 	symbol: "💎",
 	color:  ansi.Red,
 

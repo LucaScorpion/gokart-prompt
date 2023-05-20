@@ -5,7 +5,7 @@ import (
 	"gokart-prompt/internal/ansi"
 )
 
-type Section struct {
+type section struct {
 	symbol        string
 	color         ansi.ColorCode
 	upsearchFiles []string
@@ -13,7 +13,7 @@ type Section struct {
 	versionFunc   func(output string) string
 }
 
-func (s Section) Version() string {
+func (s section) version() string {
 	if _, ok := internal.UpsearchWd(s.upsearchFiles); !ok {
 		return ""
 	}

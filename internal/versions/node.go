@@ -4,7 +4,7 @@ import (
 	"gokart-prompt/internal/ansi"
 )
 
-var Node = Section{
+var Node = section{
 	symbol: "⬢",
 	color:  ansi.Green,
 

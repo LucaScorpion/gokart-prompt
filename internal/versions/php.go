@@ -5,7 +5,7 @@ import (
 	"strings"
 )
 
-var Php = Section{
+var Php = section{
 	symbol: "🐘",
 	color:  ansi.Magenta,
 

@@ -5,7 +5,7 @@ import (
 	"strings"
 )
 
-var Go = Section{
+var Go = section{
 	symbol: "🐹",
 	color:  ansi.Cyan,
 

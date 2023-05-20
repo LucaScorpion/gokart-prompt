@@ -5,7 +5,7 @@ import (
 	"strings"
 )
 
-var Java = Section{
+var Java = section{
 	symbol: "☕",
 	color:  ansi.Cyan,
 

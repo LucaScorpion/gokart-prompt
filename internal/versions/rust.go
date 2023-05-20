@@ -5,7 +5,7 @@ import (
 	"strings"
 )
 
-var Rust = Section{
+var Rust = section{
 	symbol: "🦀",
 	color:  ansi.Red,
 
