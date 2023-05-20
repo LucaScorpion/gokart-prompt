@@ -9,6 +9,18 @@ import (
 	"os"
 )
 
+var versionSections = []versions.Section{
+	// Languages
+	versions.Go,
+	versions.Java,
+	versions.Node,
+	versions.Php,
+	versions.Ruby,
+	versions.Rust,
+	// Tools
+	versions.Docker,
+}
+
 func main() {
 	if len(os.Args) != 2 {
 		fmt.Println("Expected one argument: ps1 or ps2")
@@ -34,16 +46,9 @@ func ps1() {
 	fmt.Print(internal.Path())
 	fmt.Print(git.Git())
 
-	// Languages
-	fmt.Print(versions.Go.Version())
-	fmt.Print(versions.Java.Version())
-	fmt.Print(versions.Node.Version())
-	fmt.Print(versions.Php.Version())
-	fmt.Print(versions.Ruby.Version())
-	fmt.Print(versions.Rust.Version())
-
-	// Tools
-	fmt.Print(versions.Docker.Version())
+	for _, s := range versionSections {
+		fmt.Print(s.Version())
+	}
 
 	fmt.Print(ansi.Reset())
 }
