@@ -1,33 +1,29 @@
 package versions
 
 import (
-	"gokart-prompt/internal"
 	"gokart-prompt/internal/ansi"
 	"strings"
 )
 
-var javaFiles = []string{
-	"pom.xml",
-	"build.gradle",
-	"settings.gradle",
-	"build.xml",
-}
+var Java = section{
+	symbol: "☕",
+	color:  ansi.Cyan,
 
-func JavaVersion() string {
-	if _, ok := internal.UpsearchWd(javaFiles); !ok {
-		return ""
-	}
+	upsearchFiles: []string{
+		"pom.xml",
+		"build.gradle",
+		"settings.gradle",
+		"build.xml",
+	},
 
-	if version, ok := internal.Command("java", "--version"); ok {
+	command: []string{"java", "--version"},
+	versionFunc: func(output string) string {
 		/*
 			Example:
 			openjdk 19.0.2 2023-01-17
 			OpenJDK Runtime Environment (build 19.0.2+7)
 			OpenJDK 64-Bit Server VM (build 19.0.2+7, mixed mode)
 		*/
-		version := strings.SplitN(version, " ", 3)[1]
-		return ansi.Color(ansi.Cyan, " ☕ v"+version)
-	}
-
-	return ""
+		return "v" + strings.SplitN(output, " ", 3)[1]
+	},
 }

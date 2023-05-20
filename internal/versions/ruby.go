@@ -1,29 +1,25 @@
 package versions
 
 import (
-	"gokart-prompt/internal"
 	"gokart-prompt/internal/ansi"
 	"strings"
 )
 
-var rubyFiles = []string{
-	"Gemfile",
-	"Rakefile",
-}
+var Ruby = section{
+	symbol: "💎",
+	color:  ansi.Red,
 
-func RubyVersion() string {
-	if _, ok := internal.UpsearchWd(rubyFiles); !ok {
-		return ""
-	}
+	upsearchFiles: []string{
+		"Gemfile",
+		"Rakefile",
+	},
 
-	if version, ok := internal.Command("ruby", "-v"); ok {
+	command: []string{"ruby", "-v"},
+	versionFunc: func(output string) string {
 		/*
 			Example:
 			ruby 3.0.5p211 (2022-11-24 revision ba5cf0f7c5) [x86_64-linux]
 		*/
-		version = strings.SplitN(version, " ", 3)[1]
-		return ansi.Color(ansi.Red, " 💎 v"+version)
-	}
-
-	return ""
+		return "v" + strings.SplitN(output, " ", 3)[1]
+	},
 }

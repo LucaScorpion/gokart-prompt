@@ -30,20 +30,9 @@ func ps1() {
 	fmt.Print("\n")
 	fmt.Print(ansi.Bold())
 
-	// Path and project info
 	fmt.Print(internal.Path())
 	fmt.Print(git.Git())
-
-	// Languages
-	fmt.Print(versions.GoVersion())
-	fmt.Print(versions.JavaVersion())
-	fmt.Print(versions.NodeVersion())
-	fmt.Print(versions.PhpVersion())
-	fmt.Print(versions.RubyVersion())
-	fmt.Print(versions.RustVersion())
-
-	// Tools
-	fmt.Print(versions.DockerVersion())
+	fmt.Print(versions.All())
 
 	fmt.Print(ansi.Reset())
 }

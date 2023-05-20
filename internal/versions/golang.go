@@ -1,28 +1,24 @@
 package versions
 
 import (
-	"gokart-prompt/internal"
 	"gokart-prompt/internal/ansi"
 	"strings"
 )
 
-var goFiles = []string{
-	"go.mod",
-}
+var Go = section{
+	symbol: "🐹",
+	color:  ansi.Cyan,
 
-func GoVersion() string {
-	if _, ok := internal.UpsearchWd(goFiles); !ok {
-		return ""
-	}
+	upsearchFiles: []string{
+		"go.mod",
+	},
 
-	if version, ok := internal.Command("go", "version"); ok {
+	command: []string{"go", "version"},
+	versionFunc: func(output string) string {
 		/*
 			Example:
 			go version go1.20.2 linux/amd64
 		*/
-		version := strings.SplitN(version, " ", 4)[2][2:]
-		return ansi.Color(ansi.Cyan, " 🐹 v"+version)
-	}
-
-	return ""
+		return "v" + strings.SplitN(output, " ", 4)[2][2:]
+	},
 }

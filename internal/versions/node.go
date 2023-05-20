@@ -1,27 +1,24 @@
 package versions
 
 import (
-	"gokart-prompt/internal"
 	"gokart-prompt/internal/ansi"
 )
 
-var nodeFiles = []string{
-	"package.json",
-	"node_modules",
-}
+var Node = section{
+	symbol: "⬢",
+	color:  ansi.Green,
 
-func NodeVersion() string {
-	if _, ok := internal.UpsearchWd(nodeFiles); !ok {
-		return ""
-	}
+	upsearchFiles: []string{
+		"package.json",
+		"node_modules",
+	},
 
-	if version, ok := internal.Command("node", "-v"); ok {
+	command: []string{"node", "-v"},
+	versionFunc: func(output string) string {
 		/*
 			Example:
 			v19.1.0
 		*/
-		return ansi.Color(ansi.Green, " ⬢ "+version)
-	}
-
-	return ""
+		return output
+	},
 }
