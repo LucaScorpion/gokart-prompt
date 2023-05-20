@@ -1,30 +1,27 @@
 package versions
 
 import (
-	"gokart-prompt/internal"
 	"gokart-prompt/internal/ansi"
 	"strings"
 )
 
-var dockerFiles = []string{
-	"Dockerfile",
-	"docker-compose.yml",
-	"docker-compose.yaml",
-}
+var Docker = Section{
+	symbol: "🐳",
+	color:  ansi.Blue,
 
-func DockerVersion() string {
-	if _, ok := internal.UpsearchWd(dockerFiles); !ok {
-		return ""
-	}
+	upsearchFiles: []string{
+		"Dockerfile",
+		"docker-compose.yml",
+		"docker-compose.yaml",
+	},
 
-	if version, ok := internal.Command("docker", "-v"); ok {
+	command: []string{"docker", "-v"},
+	versionFunc: func(output string) string {
 		/*
 			Example:
 			Docker version 23.0.1, build a5ee5b1dfc
 		*/
-		version, _, _ = strings.Cut(version[15:], ",")
-		return ansi.Color(ansi.Blue, " 🐳 v"+version)
-	}
-
-	return ""
+		version, _, _ := strings.Cut(output[15:], ",")
+		return "v" + version
+	},
 }

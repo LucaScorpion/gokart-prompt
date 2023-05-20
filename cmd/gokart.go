@@ -43,7 +43,7 @@ func ps1() {
 	fmt.Print(versions.RustVersion())
 
 	// Tools
-	fmt.Print(versions.DockerVersion())
+	fmt.Print(versions.Docker.GetVersion())
 
 	fmt.Print(ansi.Reset())
 }
