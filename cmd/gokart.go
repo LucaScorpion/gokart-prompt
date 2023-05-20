@@ -35,15 +35,15 @@ func ps1() {
 	fmt.Print(git.Git())
 
 	// Languages
-	fmt.Print(versions.GoVersion())
-	fmt.Print(versions.JavaVersion())
-	fmt.Print(versions.Node.GetVersion())
-	fmt.Print(versions.PhpVersion())
-	fmt.Print(versions.RubyVersion())
-	fmt.Print(versions.RustVersion())
+	fmt.Print(versions.Go.Version())
+	fmt.Print(versions.Java.Version())
+	fmt.Print(versions.Node.Version())
+	fmt.Print(versions.Php.Version())
+	fmt.Print(versions.Ruby.Version())
+	fmt.Print(versions.Rust.Version())
 
 	// Tools
-	fmt.Print(versions.Docker.GetVersion())
+	fmt.Print(versions.Docker.Version())
 
 	fmt.Print(ansi.Reset())
 }

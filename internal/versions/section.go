@@ -13,7 +13,7 @@ type Section struct {
 	versionFunc   func(output string) string
 }
 
-func (s Section) GetVersion() string {
+func (s Section) Version() string {
 	if _, ok := internal.UpsearchWd(s.upsearchFiles); !ok {
 		return ""
 	}
