@@ -37,7 +37,7 @@ func ps1() {
 	// Languages
 	fmt.Print(versions.GoVersion())
 	fmt.Print(versions.JavaVersion())
-	fmt.Print(versions.NodeVersion())
+	fmt.Print(versions.Node.GetVersion())
 	fmt.Print(versions.PhpVersion())
 	fmt.Print(versions.RubyVersion())
 	fmt.Print(versions.RustVersion())
