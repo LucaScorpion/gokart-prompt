@@ -21,7 +21,7 @@ func (s section) version(wdFiles []string) string {
 	}
 
 	if output, ok := internal.Command(s.command[0], s.command[1:]...); ok {
-		return ansi.Color(s.color, " "+s.symbol+" "+s.versionFunc(output))
+		return ansi.Color(s.color, s.symbol+" "+s.versionFunc(output))
 	}
 
 	return ""
