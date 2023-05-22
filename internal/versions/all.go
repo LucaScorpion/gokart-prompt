@@ -10,6 +10,7 @@ var sections = []section{
 	Java,
 	Node,
 	Php,
+	Python,
 	Ruby,
 	Rust,
 	// Tools
