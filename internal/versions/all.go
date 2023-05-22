@@ -17,7 +17,7 @@ var sections = []section{
 	Docker,
 }
 
-func All() string {
+func All(wdFiles []string) string {
 	var wg sync.WaitGroup
 	result := make([]string, len(sections))
 
