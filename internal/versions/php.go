@@ -12,6 +12,9 @@ var Php = section{
 	upsearchFiles: []string{
 		"composer.json",
 	},
+	wdFiles: []string{
+		"*.php",
+	},
 
 	command: []string{"php", "-v"},
 	versionFunc: func(output string) string {

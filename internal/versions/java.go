@@ -10,10 +10,16 @@ var Java = section{
 	color:  ansi.Cyan,
 
 	upsearchFiles: []string{
-		"pom.xml",
 		"build.gradle",
-		"settings.gradle",
 		"build.xml",
+		"pom.xml",
+		"settings.gradle",
+	},
+	wdFiles: []string{
+		"*.class",
+		"*.jar",
+		"*.java",
+		"*.war",
 	},
 
 	command: []string{"java", "--version"},

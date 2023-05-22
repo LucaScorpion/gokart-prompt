@@ -13,6 +13,9 @@ var Ruby = section{
 		"Gemfile",
 		"Rakefile",
 	},
+	wdFiles: []string{
+		"*.rb",
+	},
 
 	command: []string{"ruby", "-v"},
 	versionFunc: func(output string) string {

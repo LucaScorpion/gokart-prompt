@@ -27,13 +27,13 @@ func main() {
 }
 
 func ps1() {
+	wdFiles := internal.ListWdFiles()
+
 	fmt.Print("\n")
 	fmt.Print(ansi.Bold())
-
 	fmt.Print(internal.Path())
 	fmt.Print(git.Git())
-	fmt.Print(versions.All())
-
+	fmt.Print(versions.All(wdFiles))
 	fmt.Print(ansi.Reset())
 }
 

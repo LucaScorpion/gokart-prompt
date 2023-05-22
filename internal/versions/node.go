@@ -9,8 +9,12 @@ var Node = section{
 	color:  ansi.Green,
 
 	upsearchFiles: []string{
-		"package.json",
 		"node_modules",
+		"package.json",
+	},
+	wdFiles: []string{
+		"*.js",
+		"*.ts",
 	},
 
 	command: []string{"node", "-v"},
