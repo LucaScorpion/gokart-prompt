@@ -6,6 +6,7 @@ import (
 
 var sections = []section{
 	// Languages
+	Dotnet,
 	Go,
 	Java,
 	Node,
