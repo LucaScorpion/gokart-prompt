@@ -12,6 +12,9 @@ var Go = section{
 	upsearchFiles: []string{
 		"go.mod",
 	},
+	wdFiles: []string{
+		"*.go",
+	},
 
 	command: []string{"go", "version"},
 	versionFunc: func(output string) string {

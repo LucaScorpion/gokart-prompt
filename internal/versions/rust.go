@@ -12,6 +12,9 @@ var Rust = section{
 	upsearchFiles: []string{
 		"Cargo.toml",
 	},
+	wdFiles: []string{
+		"*.rs",
+	},
 
 	command: []string{"rustc", "--version"},
 	versionFunc: func(output string) string {

@@ -27,7 +27,7 @@ func All(wdFiles []string) string {
 		i := i
 		s := s
 		go func() {
-			result[i] = s.version()
+			result[i] = s.version(wdFiles)
 			wg.Done()
 		}()
 	}
