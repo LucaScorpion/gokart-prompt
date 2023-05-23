@@ -35,6 +35,9 @@ func ps1() {
 	fmt.Print(git.Git())
 	fmt.Print(versions.All(wdFiles))
 	fmt.Print(ansi.Reset())
+
+	fmt.Println()
+	ps2()
 }
 
 func ps2() {
