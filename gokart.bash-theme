@@ -4,6 +4,8 @@ GOKART_PROMPT_DIR="$(realpath "$(dirname "${BASH_SOURCE[0]}")")"
 
 gokart_prompt_precmd() {
     export EXIT_CODE=$?
+    export GOKART_SHELL=bash
+
     PS1=$("$GOKART_PROMPT_DIR/gokart" ps1)
     PS2=$("$GOKART_PROMPT_DIR/gokart" ps2)
 }
