@@ -24,6 +24,22 @@ ln -s "$ZSH_CUSTOM/themes/gokart-prompt/gokart.zsh-theme" "$ZSH_CUSTOM/themes/go
 Set `ZSH_THEME="gokart"` in your `.zshrc`.
 </details>
 
+<details>
+<summary>Bash</summary>
+
+Download and extract the latest release:
+
+```shell
+curl -fsSL https://github.com/LucaScorpion/gokart-prompt/releases/latest/download/gokart-prompt.tar.gz | tar xzvf - -C "$HOME"
+```
+
+Source `gokart.bash-theme` in your `.bashrc`:
+
+```shell
+source "$HOME/gokart-prompt/gokart.bash-theme"
+```
+</details>
+
 ## Requirements ✅
 
 ### [Powerline](https://github.com/powerline/fonts) or [Nerd Font](https://www.nerdfonts.com)
