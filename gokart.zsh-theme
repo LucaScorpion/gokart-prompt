@@ -8,9 +8,6 @@ gokart_prompt_precmd() {
     export EXIT_CODE=$?
     PS1=$("$GOKART_PROMPT_DIR/gokart" ps1)
     PS2=$("$GOKART_PROMPT_DIR/gokart" ps2)
-
-    local NEWLINE=$'\n'
-    PROMPT="${PS1}${NEWLINE}${PS2}"
 }
 
 gokart_prompt_setup() {
