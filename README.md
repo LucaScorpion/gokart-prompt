@@ -4,7 +4,9 @@
 
 [![Build](https://github.com/LucaScorpion/gokart-prompt/actions/workflows/build.yml/badge.svg)](https://github.com/LucaScorpion/gokart-prompt/actions/workflows/build.yml)
 
-![Screenshot of a terminal with the Gokart prompt](screenshot.png)
+<div style="text-align: center">
+  <img src="screenshot.png" alt="Screenshot of a terminal with the Gokart prompt">
+</div>
 
 ## Installation 🚀
 
