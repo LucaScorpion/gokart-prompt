@@ -4,6 +4,8 @@
 
 [![Build](https://github.com/LucaScorpion/gokart-prompt/actions/workflows/build.yml/badge.svg)](https://github.com/LucaScorpion/gokart-prompt/actions/workflows/build.yml)
 
+![Screenshot of a terminal with the Gokart prompt](screenshot.png)
+
 ## Installation 🚀
 
 <details>
@@ -51,3 +53,21 @@ echo -e "\xee\x82\xa0"
 ```
 
 This should print a "branch" icon.
+
+## Features ✨
+
+- Git branch and status information
+- Command exit code
+- Version information for various tools and languages
+  - Docker
+  - .NET
+  - Go
+  - Java
+  - Node.js
+  - PHP
+  - Python
+  - Ruby
+  - Rust
+
+Is something missing?
+Feel free to [open an issue](https://github.com/LucaScorpion/gokart-prompt/issues/new) or send a pull request!
