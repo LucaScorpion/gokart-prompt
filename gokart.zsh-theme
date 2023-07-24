@@ -12,10 +12,29 @@ gokart_prompt_precmd() {
     PS2=$("$GOKART_PROMPT_DIR/gokart" ps2)
 }
 
+gokart_prompt_preexec() {
+    # TODO: Here we get the entered command.
+    # https://zsh.sourceforge.io/Doc/Release/Functions.html#index-preexec_005ffunctions
+    # If this is empty, we should also reset the timer.
+    echo one
+    echo $1
+    echo two
+    echo $2
+    echo three
+    echo $3
+}
+
+gokart_prompt_set_time() {
+    export GOKART_TIME="$EPOCHREALTIME"
+}
+
 gokart_prompt_setup() {
     autoload -Uz add-zsh-hook
 
     add-zsh-hook precmd gokart_prompt_precmd
+    add-zsh-hook preexec gokart_prompt_preexec
+    add-zsh-hook preexec gokart_prompt_set_time
+    add-zsh-hook chpwd gokart_prompt_set_time
 }
 
 gokart_prompt_setup
