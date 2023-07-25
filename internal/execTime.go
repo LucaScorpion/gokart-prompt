@@ -8,10 +8,8 @@ import (
 )
 
 func CmdTime() string {
-	cmd := os.Getenv("GOKART_CMD")
-
 	// If no command was entered, never display the time.
-	if cmd == "" {
+	if os.Getenv("GOKART_CMD") == "" {
 		return ""
 	}
 
