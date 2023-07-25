@@ -15,7 +15,7 @@ gokart_prompt_precmd() {
     PS2=$("$GOKART_PROMPT_DIR/gokart" ps2)
 
     # Clear the entered command.
-    GOKART_CMD=
+    export GOKART_CMD=
 }
 
 gokart_prompt_preexec() {
