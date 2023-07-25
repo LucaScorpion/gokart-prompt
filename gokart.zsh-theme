@@ -5,10 +5,13 @@
 GOKART_PROMPT_DIR=${${(%):-%x}:A:h}
 
 gokart_prompt_precmd() {
+    # Store the previous command exit code.
+    # Note that this has to be the very first command of this function.
+    export EXIT_CODE=$?
+
     # Store the current time, i.e. the previous command end time.
     export GOKART_CMD_END=$EPOCHREALTIME
 
-    export EXIT_CODE=$?
     export GOKART_SHELL=zsh
 
     PS1=$("$GOKART_PROMPT_DIR/gokart" ps1)
