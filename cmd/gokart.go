@@ -7,7 +7,6 @@ import (
 	"gokart-prompt/internal/git"
 	"gokart-prompt/internal/versions"
 	"os"
-	"time"
 )
 
 func main() {
@@ -28,7 +27,6 @@ func main() {
 }
 
 func ps1() {
-	nowMillis := time.Now().UnixMilli()
 	wdFiles := internal.ListWdFiles()
 
 	fmt.Print("\n")
@@ -36,7 +34,7 @@ func ps1() {
 	fmt.Print(internal.Path())
 	fmt.Print(git.Git())
 	fmt.Print(versions.All(wdFiles))
-	fmt.Print(internal.CmdTime(nowMillis))
+	fmt.Print(internal.CmdTime())
 
 	fmt.Print(ansi.Reset())
 	fmt.Println()

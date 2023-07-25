@@ -5,27 +5,26 @@
 GOKART_PROMPT_DIR=${${(%):-%x}:A:h}
 
 gokart_prompt_precmd() {
+    # Store the current time, i.e. the previous command end time.
+    export GOKART_CMD_END=$EPOCHREALTIME
+
     export EXIT_CODE=$?
     export GOKART_SHELL=zsh
 
     PS1=$("$GOKART_PROMPT_DIR/gokart" ps1)
     PS2=$("$GOKART_PROMPT_DIR/gokart" ps2)
+
+    # Clear the entered command.
+    GOKART_CMD=
 }
 
 gokart_prompt_preexec() {
-    # TODO: Here we get the entered command.
+    # Get and store the command that was entered.
     # https://zsh.sourceforge.io/Doc/Release/Functions.html#index-preexec_005ffunctions
-    # If this is empty, we should also reset the timer.
-    echo one
-    echo $1
-    echo two
-    echo $2
-    echo three
-    echo $3
-}
+    export GOKART_CMD="$1"
 
-gokart_prompt_set_time() {
-    export GOKART_TIME="$EPOCHREALTIME"
+    # Store the command start time.
+    export GOKART_CMD_START=$EPOCHREALTIME
 }
 
 gokart_prompt_setup() {
@@ -33,8 +32,6 @@ gokart_prompt_setup() {
 
     add-zsh-hook precmd gokart_prompt_precmd
     add-zsh-hook preexec gokart_prompt_preexec
-    add-zsh-hook preexec gokart_prompt_set_time
-    add-zsh-hook chpwd gokart_prompt_set_time
 }
 
 gokart_prompt_setup
