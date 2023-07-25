@@ -60,6 +60,7 @@ This should print a "branch" icon.
 
 - Git branch and status information
 - Command exit code
+- Command execution time[^zsh-only]
 - Version information for various tools and languages
   - Docker
   - .NET
@@ -70,6 +71,8 @@ This should print a "branch" icon.
   - Python
   - Ruby
   - Rust
+
+[^zsh-only]: Only in Zsh, due to limitations of Bash. 
 
 Is something missing?
 Feel free to [open an issue](https://github.com/LucaScorpion/gokart-prompt/issues/new) or send a pull request!
