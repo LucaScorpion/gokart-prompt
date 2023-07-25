@@ -34,8 +34,9 @@ func ps1() {
 	fmt.Print(internal.Path())
 	fmt.Print(git.Git())
 	fmt.Print(versions.All(wdFiles))
-	fmt.Print(ansi.Reset())
+	fmt.Print(internal.CmdTime())
 
+	fmt.Print(ansi.Reset())
 	fmt.Println()
 	ps2()
 }
