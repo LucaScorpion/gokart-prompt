@@ -16,7 +16,7 @@ var Docker = section{
 	},
 
 	command: []string{"docker", "-v"},
-	versionFunc: func(output string) string {
+	versionFn: func(output string) string {
 		/*
 			Example:
 			Docker version 23.0.1, build a5ee5b1dfc

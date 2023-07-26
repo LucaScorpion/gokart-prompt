@@ -17,7 +17,7 @@ var Rust = section{
 	},
 
 	command: []string{"rustc", "--version"},
-	versionFunc: func(output string) string {
+	versionFn: func(output string) string {
 		/*
 			Example:
 			rustc 1.69.0 (84c898d65 2023-04-16) (Arch Linux rust 1:1.69.0-2)

@@ -19,7 +19,7 @@ var Python = section{
 	},
 
 	command: []string{"python", "--version"},
-	versionFunc: func(output string) string {
+	versionFn: func(output string) string {
 		/*
 			Example:
 			Python 3.10.10

@@ -21,7 +21,7 @@ var Node = section{
 	},
 
 	command: []string{"node", "-v"},
-	versionFunc: func(output string) string {
+	versionFn: func(output string) string {
 		/*
 			Example:
 			v19.1.0

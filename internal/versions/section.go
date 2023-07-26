@@ -12,7 +12,7 @@ type section struct {
 	upsearchFiles     []string
 	wdFiles           []string
 	command           []string
-	versionFunc       func(output string) string
+	versionFn         func(output string) string
 	expectedVersionFn func() string
 }
 
@@ -22,7 +22,7 @@ func (s section) version(wdFiles []string) string {
 	}
 
 	if output, ok := internal.Command(s.command[0], s.command[1:]...); ok {
-		curVersion := s.versionFunc(output)
+		curVersion := s.versionFn(output)
 		str := s.symbol + " " + curVersion
 
 		// Check if we know the expected version, and if that matches the found version.

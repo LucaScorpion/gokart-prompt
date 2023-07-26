@@ -18,7 +18,7 @@ var Ruby = section{
 	},
 
 	command: []string{"ruby", "-v"},
-	versionFunc: func(output string) string {
+	versionFn: func(output string) string {
 		/*
 			Example:
 			ruby 3.0.5p211 (2022-11-24 revision ba5cf0f7c5) [x86_64-linux]
