@@ -20,7 +20,7 @@ var Dotnet = section{
 	},
 
 	command: []string{"dotnet", "--version"},
-	versionFunc: func(output string) string {
+	versionFn: func(output string) string {
 		/*
 			Example:
 			6.0.114

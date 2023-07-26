@@ -23,7 +23,7 @@ var Java = section{
 	},
 
 	command: []string{"java", "--version"},
-	versionFunc: func(output string) string {
+	versionFn: func(output string) string {
 		/*
 			Example:
 			openjdk 19.0.2 2023-01-17

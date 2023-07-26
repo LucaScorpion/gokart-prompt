@@ -7,12 +7,13 @@ import (
 )
 
 type section struct {
-	symbol        string
-	color         ansi.ColorCode
-	upsearchFiles []string
-	wdFiles       []string
-	command       []string
-	versionFunc   func(output string) string
+	symbol            string
+	color             ansi.ColorCode
+	upsearchFiles     []string
+	wdFiles           []string
+	command           []string
+	versionFn         func(output string) string
+	expectedVersionFn func() string
 }
 
 func (s section) version(wdFiles []string) string {
@@ -21,7 +22,15 @@ func (s section) version(wdFiles []string) string {
 	}
 
 	if output, ok := internal.Command(s.command[0], s.command[1:]...); ok {
-		return ansi.Color(s.color, s.symbol+" "+s.versionFunc(output))
+		curVersion := s.versionFn(output)
+		str := s.symbol + " " + curVersion
+
+		// Check if we know the expected version, and if that matches the found version.
+		if s.expectedVersionFn != nil && !internal.SemVerMatches(curVersion, s.expectedVersionFn()) {
+			str += " ⚠️ "
+		}
+
+		return ansi.Color(s.color, str)
 	}
 
 	return ""

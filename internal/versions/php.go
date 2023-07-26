@@ -17,7 +17,7 @@ var Php = section{
 	},
 
 	command: []string{"php", "-v"},
-	versionFunc: func(output string) string {
+	versionFn: func(output string) string {
 		/*
 			Example:
 			PHP 8.2.4 (cli) (built: Mar 15 2023 15:27:52) (NTS)

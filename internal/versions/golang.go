@@ -17,7 +17,7 @@ var Go = section{
 	},
 
 	command: []string{"go", "version"},
-	versionFunc: func(output string) string {
+	versionFn: func(output string) string {
 		/*
 			Example:
 			go version go1.20.2 linux/amd64
