@@ -61,7 +61,7 @@ This should print a "branch" icon.
 - Git branch and status information
 - Command exit code
 - Command execution time[^zsh-only]
-- Version information for various tools and languages
+- Version information for various tools and languages:
   - Docker
   - .NET
   - Go
@@ -71,6 +71,8 @@ This should print a "branch" icon.
   - Python
   - Ruby
   - Rust
+- Expected version and mismatch indicator (⚠️) for:
+  - Node.js (`.nvmrc`)
 
 [^zsh-only]: Only in Zsh, due to limitations of Bash. 
 
