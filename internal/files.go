@@ -24,3 +24,17 @@ func ListWdFiles() []string {
 
 	return files
 }
+
+func ReadUpsearchWdFile(file string) string {
+	path, found := UpsearchWd([]string{file})
+	if !found {
+		return ""
+	}
+
+	bytes, err := os.ReadFile(path)
+	if err != nil {
+		return ""
+	}
+
+	return string(bytes)
+}
