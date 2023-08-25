@@ -72,6 +72,7 @@ This should print a "branch" icon.
   - Ruby
   - Rust
 - Expected version and mismatch indicator (⚠️) for:
+  - Go (`go.mod`)
   - Node.js (`.nvmrc`)
 
 [^zsh-only]: Only in Zsh, due to limitations of Bash. 
