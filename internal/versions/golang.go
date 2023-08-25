@@ -28,7 +28,14 @@ var Go = section{
 
 	expectedVersionFn: func() string {
 		str := internal.ReadUpsearchWdFile("go.mod")
-		// TODO
-		return str
+		lines := strings.Split(str, "\n")
+
+		for _, line := range lines {
+			if strings.HasPrefix(line, "go ") {
+				return line[3:]
+			}
+		}
+
+		return ""
 	},
 }
