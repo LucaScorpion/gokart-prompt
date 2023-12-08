@@ -45,5 +45,5 @@ jobs:
           tar czvf ${{ matrix.filename }}.tar.gz gokart-prompt
       - uses: softprops/action-gh-release@v1
         with:
-          files: ${{ matrix.filename }}
+          files: ${{ matrix.filename }}.tar.gz
           generate_release_notes: true
