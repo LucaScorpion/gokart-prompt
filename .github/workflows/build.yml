@@ -13,4 +13,5 @@ jobs:
         with:
           go-version: '1.21'
       - run: test -z $(gofmt -l .)
+      - run: go test ./...
       - run: go build ./cmd/gokart.go
