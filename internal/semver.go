@@ -3,18 +3,11 @@ package internal
 import "strings"
 
 func SemVerMatches(current, expected string) bool {
-	expected = strings.TrimSpace(expected)
+	expected = normaliseSemVer(expected)
 	if expected == "" {
 		return true
 	}
-
-	// Strip a leading 'v' from both versions.
-	if current[0] == 'v' {
-		current = current[1:]
-	}
-	if expected[0] == 'v' {
-		expected = expected[1:]
-	}
+	current = normaliseSemVer(current)
 
 	fullVersionParts := strings.Split(current, ".")
 	checkParts := strings.Split(expected, ".")
@@ -27,4 +20,13 @@ func SemVerMatches(current, expected string) bool {
 	}
 
 	return true
+}
+
+func normaliseSemVer(v string) string {
+	v = strings.TrimSpace(v)
+	// Strip a leading 'v'.
+	if len(v) > 0 && v[0] == 'v' {
+		v = v[1:]
+	}
+	return v
 }
