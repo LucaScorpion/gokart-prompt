@@ -3,6 +3,7 @@ package internal
 import (
 	"fmt"
 	"gokart-prompt/internal/ansi"
+	"math"
 	"os"
 	"strconv"
 )
@@ -28,5 +29,17 @@ func CmdTime() string {
 		return ""
 	}
 
-	return ansi.Color(ansi.Yellow, " took "+fmt.Sprintf("%.1f", execTime)+"s")
+	return ansi.Color(ansi.Yellow, " took "+formatMinutesSeconds(execTime))
+}
+
+func formatMinutesSeconds(totalSeconds float64) string {
+	seconds := math.Mod(totalSeconds, 60)
+	result := fmt.Sprintf("%.1fs", seconds)
+
+	minutes := math.Floor(totalSeconds / 60)
+	if minutes > 0 {
+		result = fmt.Sprintf("%.0fm %s", minutes, result)
+	}
+
+	return result
 }
