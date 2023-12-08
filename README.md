@@ -10,34 +10,41 @@
 
 ## Installation 🚀
 
+First download the archive for your platform from the [latest release](https://github.com/LucaScorpion/gokart-prompt/releases/latest).
+Next, follow the steps for your terminal setup:
+
 <details>
 <summary>Oh My Zsh</summary>
 
-Download and extract the latest release:
+Extract the archive to `$ZSH_CUSTOM/themes`:
 
 ```shell
-curl -fsSL https://github.com/LucaScorpion/gokart-prompt/releases/latest/download/gokart-prompt.tar.gz | tar xzvf - -C "$ZSH_CUSTOM/themes"
+tar xzvf gokart-prompt-linux-amd64.tar.gz -C "$ZSH_CUSTOM/themes"
 ```
 
-Symlink `gokart.zsh-theme` in your themes directory:
+Make sure to replace `gokart-prompt-linux-amd64.tar.gz` with the filename of the archive you downloaded.
+
+Next, symlink `gokart.zsh-theme` in your `$ZSH_CUSTOM/themes` directory:
 
 ```shell
 ln -s "$ZSH_CUSTOM/themes/gokart-prompt/gokart.zsh-theme" "$ZSH_CUSTOM/themes/gokart.zsh-theme"
 ```
 
-Set `ZSH_THEME="gokart"` in your `.zshrc`.
+Finally, set `ZSH_THEME="gokart"` in your `.zshrc`.
 </details>
 
 <details>
 <summary>Bash</summary>
 
-Download and extract the latest release:
+Extract the archive, for example to your `$HOME` directory:
 
 ```shell
-curl -fsSL https://github.com/LucaScorpion/gokart-prompt/releases/latest/download/gokart-prompt.tar.gz | tar xzvf - -C "$HOME"
+tar xzvf gokart-prompt-linux-amd64.tar.gz -C "$HOME"
 ```
 
-Source `gokart.bash-theme` in your `.bashrc`:
+Make sure to replace `gokart-prompt-linux-amd64.tar.gz` with the filename of the archive you downloaded.
+
+Finally, source `gokart.bash-theme` in your `.bashrc`:
 
 ```shell
 source "$HOME/gokart-prompt/gokart.bash-theme"
