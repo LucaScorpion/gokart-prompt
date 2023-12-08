@@ -29,6 +29,6 @@ var Node = section{
 	},
 
 	expectedVersionFn: func() string {
-		return internal.ReadUpsearchWdFile(".nvmrc")
+		return internal.UpsearchWdFileContents(".nvmrc")
 	},
 }

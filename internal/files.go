@@ -25,7 +25,7 @@ func ListWdFiles() []string {
 	return files
 }
 
-func ReadUpsearchWdFile(file string) string {
+func UpsearchWdFileContents(file string) string {
 	path, found := UpsearchWd([]string{file})
 	if !found {
 		return ""

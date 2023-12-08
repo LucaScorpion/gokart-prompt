@@ -27,7 +27,7 @@ var Go = section{
 	},
 
 	expectedVersionFn: func() string {
-		str := internal.ReadUpsearchWdFile("go.mod")
+		str := internal.UpsearchWdFileContents("go.mod")
 		lines := strings.Split(str, "\n")
 
 		for _, line := range lines {
