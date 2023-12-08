@@ -10,16 +10,40 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+    strategy:
+      matrix:
+        include:
+          - goos: linux
+            goarch: amd64
+            filename: gokart-prompt-linux-amd64
+          - goos: darwin
+            goarch: amd64
+            filename: gokart-prompt-darwin-amd64
+          - goos: darwin
+            goarch: arm64
+            goarm: 7
+            filename: gokart-prompt-darwin-arm7
+          - goos: windows
+            goarch: amd64
+            filename: gokart-prompt-windows-amd64
+    env:
+      CGO_ENABLED: 0
+      GOOS: ${{ matrix.goos }}
+      GOARCH: ${{ matrix.goarch }}
+      GOARM: ${{ matrix.goarm }}
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-go@v4
         with:
           go-version: '1.21'
-      - run: go build ./cmd/gokart.go
-      - run: mkdir gokart-prompt
-      - run: mv gokart gokart.* README.md gokart-prompt
-      - run: tar czvf gokart-prompt.tar.gz gokart-prompt
+      - name: Build
+        run: go build ./cmd/gokart.go
+      - name: Package
+        run: |
+          mkdir gokart-prompt
+          mv gokart gokart.* README.md gokart-prompt
+          tar czvf ${{ matrix.filename }}.tar.gz gokart-prompt
       - uses: softprops/action-gh-release@v1
         with:
-          files: gokart-prompt.tar.gz
+          files: ${{ matrix.filename }}
           generate_release_notes: true
