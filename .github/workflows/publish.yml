@@ -37,7 +37,7 @@ jobs:
         with:
           go-version: '1.21'
       - name: Build
-        run: go build ./cmd/gokart.go
+        run: go build -o gokart ./cmd/gokart.go
       - name: Package
         run: |
           mkdir gokart-prompt
