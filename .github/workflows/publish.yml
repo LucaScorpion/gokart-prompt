@@ -41,7 +41,7 @@ jobs:
       - name: Package
         run: |
           mkdir gokart-prompt
-          mv gokart gokart.* README.md gokart-prompt
+          mv gokart gokart.* README.md LICENSE.txt gokart-prompt
           tar czvf ${{ matrix.filename }}.tar.gz gokart-prompt
       - uses: softprops/action-gh-release@v1
         with:
