@@ -3,7 +3,6 @@ package versions
 import (
 	"gokart-prompt/internal"
 	"gokart-prompt/internal/ansi"
-	"os"
 )
 
 var Node = section{
@@ -30,16 +29,6 @@ var Node = section{
 	},
 
 	expectedVersionFn: func() string {
-		file, found := internal.UpsearchWd([]string{".nvmrc"})
-		if !found {
-			return ""
-		}
-
-		bytes, err := os.ReadFile(file)
-		if err != nil {
-			return ""
-		}
-
-		return string(bytes)
+		return internal.UpsearchWdFileContents(".nvmrc")
 	},
 }
