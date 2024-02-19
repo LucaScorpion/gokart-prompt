@@ -9,6 +9,7 @@ var sections = []section{
 	Dotnet,
 	Go,
 	Java,
+	Lua,
 	Node,
 	Php,
 	Python,

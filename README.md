@@ -73,6 +73,7 @@ This should print a "branch" icon.
   - .NET
   - Go
   - Java
+  - Lua
   - Node.js
   - PHP
   - Python
