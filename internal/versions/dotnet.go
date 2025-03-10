@@ -5,7 +5,7 @@ import (
 )
 
 var Dotnet = section{
-	symbol: "\uE77F", // 
+	symbol: "🟪", // Purple square
 	color:  ansi.Magenta,
 
 	upsearchFiles: []string{
