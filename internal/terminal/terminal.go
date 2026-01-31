@@ -1,4 +1,4 @@
-package internal
+package terminal
 
 import (
 	"os"
@@ -8,4 +8,8 @@ import (
 func Columns() int {
 	cols, _ := strconv.Atoi(os.Getenv("COLUMNS"))
 	return cols
+}
+
+func IsZsh() bool {
+	return os.Getenv("GOKART_SHELL") == "zsh"
 }

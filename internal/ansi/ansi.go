@@ -1,6 +1,8 @@
 package ansi
 
-import "os"
+import (
+	"gokart-prompt/internal/terminal"
+)
 
 const esc = "\x1B"
 const reset = "0"
@@ -22,8 +24,19 @@ func Reset() string {
 }
 
 func zeroWidth(s string) string {
-	if os.Getenv("GOKART_SHELL") == "zsh" {
-		return zshZeroWidthStart + s + zshZeroWidthEnd
+	return zeroWidthStart() + s + zeroWidthEnd()
+}
+
+func zeroWidthStart() string {
+	if terminal.IsZsh() {
+		return zshZeroWidthStart
 	}
-	return bashZeroWidthStart + s + bashZeroWidthEnd
+	return bashZeroWidthStart
+}
+
+func zeroWidthEnd() string {
+	if terminal.IsZsh() {
+		return zshZeroWidthEnd
+	}
+	return bashZeroWidthEnd
 }
