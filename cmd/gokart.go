@@ -58,6 +58,7 @@ func rightAlign(left, right string) string {
 		return ""
 	}
 
+	// TODO: Emoji seem to take up multiple columns in the terminal, account for that.
 	leftLen := utf8.RuneCountInString(ansi.ToPlain(left)) % terminal.Columns()
 	rightLen := utf8.RuneCountInString(ansi.ToPlain(right))
 
