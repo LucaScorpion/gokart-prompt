@@ -8,10 +8,10 @@ jobs:
     env:
       CGO_ENABLED: 0
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-go@v4
+      - uses: actions/checkout@v6
+      - uses: actions/setup-go@v6
         with:
-          go-version: '1.21'
+          go-version-file: 'go.mod'
       - run: test -z $(gofmt -l .)
       - run: go test ./...
       - run: go build ./cmd/gokart.go
