@@ -3,8 +3,12 @@
 GOKART_PROMPT_DIR="$(realpath "$(dirname "${BASH_SOURCE[0]}")")"
 
 gokart_prompt_precmd() {
+    # Store the previous command exit code.
+    # Note that this has to be the very first command of this function.
     export EXIT_CODE=$?
+
     export GOKART_SHELL=bash
+    export GOKART_COLUMNS=$COLUMNS
 
     PS1=$("$GOKART_PROMPT_DIR/gokart" ps1)
     PS2=$("$GOKART_PROMPT_DIR/gokart" ps2)

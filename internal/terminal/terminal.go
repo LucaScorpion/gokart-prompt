@@ -6,7 +6,7 @@ import (
 )
 
 func Columns() int {
-	cols, _ := strconv.Atoi(os.Getenv("COLUMNS"))
+	cols, _ := strconv.Atoi(os.Getenv("GOKART_COLUMNS"))
 	return cols
 }
 

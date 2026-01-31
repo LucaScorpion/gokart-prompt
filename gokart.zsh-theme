@@ -13,6 +13,7 @@ gokart_prompt_precmd() {
     export GOKART_CMD_END=$EPOCHREALTIME
 
     export GOKART_SHELL=zsh
+    export GOKART_COLUMNS=$COLUMNS
 
     PS1=$("$GOKART_PROMPT_DIR/gokart" ps1)
     PS2=$("$GOKART_PROMPT_DIR/gokart" ps2)

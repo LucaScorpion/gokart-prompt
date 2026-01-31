@@ -2,6 +2,7 @@ package ansi
 
 import (
 	"gokart-prompt/internal/terminal"
+	"regexp"
 )
 
 const esc = "\x1B"
@@ -39,4 +40,10 @@ func zeroWidthEnd() string {
 		return zshZeroWidthEnd
 	}
 	return bashZeroWidthEnd
+}
+
+func ToPlain(s string) string {
+	return regexp.
+		MustCompile(regexp.QuoteMeta(zeroWidthStart())+".*?"+regexp.QuoteMeta(zeroWidthEnd())).
+		ReplaceAllString(s, "")
 }

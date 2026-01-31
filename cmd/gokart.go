@@ -5,8 +5,11 @@ import (
 	"gokart-prompt/internal"
 	"gokart-prompt/internal/ansi"
 	"gokart-prompt/internal/git"
+	"gokart-prompt/internal/terminal"
 	"gokart-prompt/internal/versions"
 	"os"
+	"strings"
+	"unicode/utf8"
 )
 
 func main() {
@@ -37,7 +40,7 @@ func ps1() {
 
 	// Reset, spacing, and right part of PS1.
 	fmt.Print(ansi.Reset())
-	fmt.Print(rightAlign(line, internal.Time()))
+	fmt.Print(rightAlign(line, " "+internal.Time()))
 
 	// PS2 on a new line.
 	fmt.Print(ansi.Reset())
@@ -50,6 +53,12 @@ func ps2() {
 }
 
 func rightAlign(left, right string) string {
-	// TODO
-	return " " + right
+	columns := terminal.Columns()
+	if columns <= 0 {
+		return ""
+	}
+
+	leftLen := utf8.RuneCountInString(ansi.ToPlain(left))
+	rightLen := utf8.RuneCountInString(ansi.ToPlain(right))
+	return strings.Repeat(" ", terminal.Columns()-leftLen-rightLen-1) + right
 }
