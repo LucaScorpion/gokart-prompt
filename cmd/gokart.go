@@ -37,6 +37,10 @@ func ps1() {
 	fmt.Print(internal.CmdTime())
 
 	fmt.Print(ansi.Reset())
+	// TODO: Spacing
+	fmt.Print(internal.Time())
+
+	fmt.Print(ansi.Reset())
 	fmt.Println()
 	ps2()
 }
