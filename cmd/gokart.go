@@ -30,16 +30,16 @@ func ps1() {
 	wdFiles := internal.ListWdFiles()
 
 	fmt.Print("\n")
-	fmt.Print(ansi.Bold())
-	fmt.Print(internal.Path())
-	fmt.Print(git.Git())
-	fmt.Print(versions.All(wdFiles))
-	fmt.Print(internal.CmdTime())
 
+	// Left part of PS1.
+	line := ansi.Bold() + internal.Path() + git.Git() + versions.All(wdFiles) + internal.CmdTime()
+	fmt.Print(line)
+
+	// Reset, spacing, and right part of PS1.
 	fmt.Print(ansi.Reset())
-	// TODO: Spacing
-	fmt.Print(internal.Time())
+	fmt.Print(rightAlign(line, internal.Time()))
 
+	// PS2 on a new line.
 	fmt.Print(ansi.Reset())
 	fmt.Println()
 	ps2()
@@ -47,4 +47,9 @@ func ps1() {
 
 func ps2() {
 	fmt.Print(internal.ExitCode())
+}
+
+func rightAlign(left, right string) string {
+	// TODO
+	return " " + right
 }
