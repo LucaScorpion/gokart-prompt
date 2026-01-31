@@ -58,7 +58,8 @@ func rightAlign(left, right string) string {
 		return ""
 	}
 
-	leftLen := utf8.RuneCountInString(ansi.ToPlain(left))
+	leftLen := utf8.RuneCountInString(ansi.ToPlain(left)) % terminal.Columns()
 	rightLen := utf8.RuneCountInString(ansi.ToPlain(right))
-	return strings.Repeat(" ", terminal.Columns()-leftLen-rightLen-1) + right
+
+	return strings.Repeat(" ", terminal.Columns()-leftLen-rightLen) + right
 }
