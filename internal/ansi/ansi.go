@@ -1,6 +1,9 @@
 package ansi
 
-import "os"
+import (
+	"os"
+	"regexp"
+)
 
 const esc = "\x1B"
 const reset = "0"
@@ -22,8 +25,29 @@ func Reset() string {
 }
 
 func zeroWidth(s string) string {
-	if os.Getenv("GOKART_SHELL") == "zsh" {
-		return zshZeroWidthStart + s + zshZeroWidthEnd
+	return zeroWidthStart() + s + zeroWidthEnd()
+}
+
+func zeroWidthStart() string {
+	if isZsh() {
+		return zshZeroWidthStart
 	}
-	return bashZeroWidthStart + s + bashZeroWidthEnd
+	return bashZeroWidthStart
+}
+
+func zeroWidthEnd() string {
+	if isZsh() {
+		return zshZeroWidthEnd
+	}
+	return bashZeroWidthEnd
+}
+
+func ToPlain(s string) string {
+	return regexp.
+		MustCompile(regexp.QuoteMeta(zeroWidthStart())+".*?"+regexp.QuoteMeta(zeroWidthEnd())).
+		ReplaceAllString(s, "")
+}
+
+func isZsh() bool {
+	return os.Getenv("GOKART_SHELL") == "zsh"
 }

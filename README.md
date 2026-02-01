@@ -68,6 +68,7 @@ This should print a "branch" icon.
 - Git branch and status information
 - Command exit code
 - Command execution time[^zsh-only]
+- Current time
 - Version information for various tools and languages:
   - Docker
   - .NET

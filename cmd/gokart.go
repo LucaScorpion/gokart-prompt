@@ -5,14 +5,20 @@ import (
 	"gokart-prompt/internal"
 	"gokart-prompt/internal/ansi"
 	"gokart-prompt/internal/git"
+	"gokart-prompt/internal/terminal"
 	"gokart-prompt/internal/versions"
 	"os"
 )
 
 func main() {
-	if len(os.Args) != 2 {
-		fmt.Println("Expected one argument: ps1 or ps2")
+	if len(os.Args) > 2 {
+		fmt.Println("Expected at most one argument: ps1 or ps2")
 		os.Exit(1)
+	}
+
+	if len(os.Args) == 1 {
+		info()
+		return
 	}
 
 	arg := os.Args[1]
@@ -26,18 +32,23 @@ func main() {
 	}
 }
 
+func info() {
+	fmt.Println("Gokart Prompt 🏎")
+	fmt.Println("For setup, source code, and info, see: https://github.com/LucaScorpion/gokart-prompt")
+}
+
 func ps1() {
 	wdFiles := internal.ListWdFiles()
 
-	fmt.Print("\n")
+	fmt.Println(terminal.RightAlign(internal.Time()))
+
 	fmt.Print(ansi.Bold())
 	fmt.Print(internal.Path())
 	fmt.Print(git.Git())
 	fmt.Print(versions.All(wdFiles))
 	fmt.Print(internal.CmdTime())
+	fmt.Println(ansi.Reset())
 
-	fmt.Print(ansi.Reset())
-	fmt.Println()
 	ps2()
 }
 
