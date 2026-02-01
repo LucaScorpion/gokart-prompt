@@ -1,6 +1,8 @@
 package versions
 
 import (
+	"encoding/json"
+	"gokart-prompt/internal"
 	"gokart-prompt/internal/ansi"
 	"strings"
 )
@@ -26,4 +28,23 @@ var Php = section{
 		*/
 		return "v" + strings.SplitN(output, " ", 3)[1]
 	},
+
+	expectedVersionFn: func() string {
+		str := internal.UpsearchWdFileContents("composer.json")
+
+		var data composerJson
+		if err := json.Unmarshal([]byte(str), &data); err != nil {
+			return ""
+		}
+
+		return data.Require.Php
+	},
+}
+
+type composerJson struct {
+	Require composerJsonRequire `json:"require"`
+}
+
+type composerJsonRequire struct {
+	Php string `json:"php"`
 }
