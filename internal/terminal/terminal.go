@@ -1,8 +1,11 @@
 package terminal
 
 import (
+	"gokart-prompt/internal/ansi"
 	"os"
 	"strconv"
+	"strings"
+	"unicode/utf8"
 )
 
 func Columns() int {
@@ -10,6 +13,12 @@ func Columns() int {
 	return cols
 }
 
-func IsZsh() bool {
-	return os.Getenv("GOKART_SHELL") == "zsh"
+func RightAlign(right string) string {
+	columns := Columns()
+	if columns <= 0 {
+		return ""
+	}
+
+	rightLen := utf8.RuneCountInString(ansi.ToPlain(right))
+	return strings.Repeat(" ", Columns()-rightLen) + right
 }

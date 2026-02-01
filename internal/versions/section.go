@@ -27,7 +27,7 @@ func (s section) version(wdFiles []string) string {
 
 		// Check if we know the expected version, and if that matches the found version.
 		if s.expectedVersionFn != nil && !internal.SemVerMatches(curVersion, s.expectedVersionFn()) {
-			str += " ⚠️"
+			str += " ⚠️ "
 		}
 
 		return ansi.Color(s.color, str)

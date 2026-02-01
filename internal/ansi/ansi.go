@@ -1,7 +1,7 @@
 package ansi
 
 import (
-	"gokart-prompt/internal/terminal"
+	"os"
 	"regexp"
 )
 
@@ -29,14 +29,14 @@ func zeroWidth(s string) string {
 }
 
 func zeroWidthStart() string {
-	if terminal.IsZsh() {
+	if isZsh() {
 		return zshZeroWidthStart
 	}
 	return bashZeroWidthStart
 }
 
 func zeroWidthEnd() string {
-	if terminal.IsZsh() {
+	if isZsh() {
 		return zshZeroWidthEnd
 	}
 	return bashZeroWidthEnd
@@ -46,4 +46,8 @@ func ToPlain(s string) string {
 	return regexp.
 		MustCompile(regexp.QuoteMeta(zeroWidthStart())+".*?"+regexp.QuoteMeta(zeroWidthEnd())).
 		ReplaceAllString(s, "")
+}
+
+func isZsh() bool {
+	return os.Getenv("GOKART_SHELL") == "zsh"
 }

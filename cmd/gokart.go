@@ -8,14 +8,17 @@ import (
 	"gokart-prompt/internal/terminal"
 	"gokart-prompt/internal/versions"
 	"os"
-	"strings"
-	"unicode/utf8"
 )
 
 func main() {
-	if len(os.Args) != 2 {
-		fmt.Println("Expected one argument: ps1 or ps2")
+	if len(os.Args) > 2 {
+		fmt.Println("Expected at most one argument: ps1 or ps2")
 		os.Exit(1)
+	}
+
+	if len(os.Args) == 1 {
+		info()
+		return
 	}
 
 	arg := os.Args[1]
@@ -29,38 +32,26 @@ func main() {
 	}
 }
 
+func info() {
+	fmt.Println("Gokart Prompt 🏎")
+	fmt.Println("For setup, source code, and info, see: https://github.com/LucaScorpion/gokart-prompt")
+}
+
 func ps1() {
 	wdFiles := internal.ListWdFiles()
 
-	fmt.Print("\n")
+	fmt.Println(terminal.RightAlign(internal.Time()))
 
-	// Left part of PS1.
-	line := ansi.Bold() + internal.Path() + git.Git() + versions.All(wdFiles) + internal.CmdTime()
-	fmt.Print(line)
+	fmt.Print(ansi.Bold())
+	fmt.Print(internal.Path())
+	fmt.Print(git.Git())
+	fmt.Print(versions.All(wdFiles))
+	fmt.Print(internal.CmdTime())
+	fmt.Println(ansi.Reset())
 
-	// Reset, spacing, and right part of PS1.
-	fmt.Print(ansi.Reset())
-	fmt.Print(rightAlign(line, " "+internal.Time()))
-
-	// PS2 on a new line.
-	fmt.Print(ansi.Reset())
-	fmt.Println()
 	ps2()
 }
 
 func ps2() {
 	fmt.Print(internal.ExitCode())
-}
-
-func rightAlign(left, right string) string {
-	columns := terminal.Columns()
-	if columns <= 0 {
-		return ""
-	}
-
-	// TODO: Emoji seem to take up multiple columns in the terminal, account for that.
-	leftLen := utf8.RuneCountInString(ansi.ToPlain(left)) % terminal.Columns()
-	rightLen := utf8.RuneCountInString(ansi.ToPlain(right))
-
-	return strings.Repeat(" ", terminal.Columns()-leftLen-rightLen) + right
 }
