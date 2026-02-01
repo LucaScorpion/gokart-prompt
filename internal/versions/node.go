@@ -15,8 +15,12 @@ var Node = section{
 		".nvmrc",
 	},
 	wdFiles: []string{
+		"*.cjs",
 		"*.js",
+		"*.jsx",
+		"*.mjs",
 		"*.ts",
+		"*.tsx",
 	},
 
 	command: []string{"node", "-v"},
