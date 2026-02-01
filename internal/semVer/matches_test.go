@@ -1,8 +1,8 @@
-package internal
+package semVer
 
 import "testing"
 
-func TestSemVerMatches(t *testing.T) {
+func TestMatches(t *testing.T) {
 	cases := [][]any{
 		{"1.2.3", "1.2.3", true},
 		{"1.2.3", "1.2", true},
@@ -20,9 +20,9 @@ func TestSemVerMatches(t *testing.T) {
 		a := c[0].(string)
 		b := c[1].(string)
 		expected := c[2].(bool)
-		actual := SemVerMatches(a, b)
+		actual := Matches(a, b)
 		if actual != expected {
-			t.Errorf("SemVerMatches(%s, %s) = %t, expected %t", a, b, actual, expected)
+			t.Errorf("Matches(%s, %s) = %t, expected %t", a, b, actual, expected)
 		}
 	}
 }

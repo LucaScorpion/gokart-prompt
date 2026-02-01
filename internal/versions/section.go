@@ -3,6 +3,7 @@ package versions
 import (
 	"gokart-prompt/internal"
 	"gokart-prompt/internal/ansi"
+	"gokart-prompt/internal/semVer"
 	"path"
 )
 
@@ -26,7 +27,7 @@ func (s section) version(wdFiles []string) string {
 		str := s.symbol + " " + curVersion
 
 		// Check if we know the expected version, and if that matches the found version.
-		if s.expectedVersionFn != nil && !internal.SemVerMatches(curVersion, s.expectedVersionFn()) {
+		if s.expectedVersionFn != nil && !semVer.Matches(curVersion, s.expectedVersionFn()) {
 			str += " ⚠️ "
 		}
 
