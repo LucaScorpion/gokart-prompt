@@ -2,24 +2,20 @@ package semVer
 
 import (
 	"fmt"
-	"strings"
 )
 
 type SemVer struct {
-	major int
-	minor int
-	patch int
+	major    int
+	minor    int
+	patch    int
+	operator string
 }
+
+type Operator string
+
+var Tilde Operator = "~"
+var Caret Operator = "^"
 
 func (s SemVer) String() string {
-	return fmt.Sprintf("%d.%d.%d", s.major, s.minor, s.patch)
-}
-
-func normaliseSemVer(v string) string {
-	v = strings.TrimSpace(v)
-	// Strip a leading 'v'.
-	if len(v) > 0 && v[0] == 'v' {
-		v = v[1:]
-	}
-	return v
+	return fmt.Sprintf("%s%d.%d.%d", s.operator, s.major, s.minor, s.patch)
 }

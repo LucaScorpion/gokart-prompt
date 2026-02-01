@@ -21,3 +21,12 @@ func Matches(current, expected string) bool {
 
 	return true
 }
+
+func normaliseSemVer(v string) string {
+	v = strings.TrimSpace(v)
+	// Strip a leading 'v'.
+	if len(v) > 0 && v[0] == 'v' {
+		v = v[1:]
+	}
+	return v
+}
