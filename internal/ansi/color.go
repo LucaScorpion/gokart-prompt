@@ -1,5 +1,7 @@
 package ansi
 
+import "strconv"
+
 type ColorCode string
 
 const (
@@ -16,4 +18,8 @@ const (
 
 func Color(c ColorCode, s string) string {
 	return mode(string(c)) + s + mode(string(DefaultColor))
+}
+
+func Color256(color byte, s string) string {
+	return mode("38;5;"+strconv.Itoa(int(color))) + s + mode(string(DefaultColor))
 }
